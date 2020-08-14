@@ -1,0 +1,12 @@
+
+
+
+* Ability to auto scroll to wanted page.
+
+1. Name and location, phone number;
+2. Location by text, some features;
+2. Type of room, bed size, ppl amount, picture, price;
+3. Way to book a room;
+4. Slider;
+5. Google maps location;
+6. Footer, phone number, location, name, links if exists, All Rights Reserved.
