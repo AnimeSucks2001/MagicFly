@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="utf-8" />
 	<title>MagicFly</title>
 	<link rel="stylesheet" href="css/style.css">
 	<link href="https://fonts.googleapis.com/css2?family=Lemonada:wght@600&display=swap" rel="stylesheet"> 
@@ -15,39 +16,39 @@
 		</ul>
 		<div class="nav-btn"></div>
 	</nav>
-	<header class="start-page">
+	<header class="start-page-wrapper">
+		<div class="start-page">
 		<h1>MagicFly</h1>
-		<span class="number">+380123456789</span>
-		<div><img src="img/googlemap.png"><a href="#">location location 28 ll</a>
+		<span class="number">095 054 8984</span>
+		<div><img src="img/googlemap.png"><a href="#">Находимся на ул. Победы, 3Г
+Белгород-Днестровский</a>
 		</div>
+		</div>
+		<button>Забронировать номер</button>
 	</header>
 	<section class="page-second">
 		<div class="page-second-left">
-			<h2>Lorem lorem lorem lorem</h2>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			<h2>О нас</h2>
+			<p>Мини-отель "Magic Fly" расположен недалеко от центра города, в 1,5 км от крепости Аккерман. Номерной фонд состоит из пяти комфортабельных номеров категории "стандарт" и 1 восьмиместного номера категории "хостел". Каждый номер оформлен в оригинальном стиле, с использованием кованной мебели, сенсорного и дистанционного управления освещением.</p>
 		</div>
 		<div class="page-second-right">
+			<h2>У нас имеется</h2>
 			<ul>
 			  <li>
-			  	<img src="#">
-			  	<span>Lorem lorem lorem lorem</span>
+			  	<img src="img/wifi.svg" class="page-second-img">
+			  	<span class="page-second-text">Бесплатный Wi-Fi</span>
 			  </li>
 			  <li>
-			  	<img src="#">
-			  	<span>Lorem lorem lorem lorem</span>
+			  	<img src="img/shower.svg" class="page-second-img">
+			  	<span class="page-second-text">Горячий душ</span>
 			  </li>
 			  <li>
-			  	<img src="#">
-			  	<span>Lorem lorem lorem lorem</span>
+			  	<img src="img/TV.svg" class="page-second-img">
+			  	<span class="page-second-text">TV</span>
 			  </li>
 			  <li>
-			  	<img src="#">
-			  	<span>Lorem lorem lorem lorem</span>
+			  	<img src="img/airconditioner.svg" class="page-second-img">
+			  	<span class="page-second-text">Кондиционер</span>
 			  </li>
 		    </ul>
 	    </div>
@@ -55,44 +56,46 @@
 	<section class="page-third">
 		<div class="page-third-left">
 			<div class="room-type">
-				<div class="room-type-circles"></div>
-				<div class="room-type-circles"></div>
-				<div class="room-type-circles"></div>
+				<div class="room-type-circles rc1"></div>
+				<div class="room-type-circles rc2"></div>
+				<div class="room-type-circles rc3"></div>
 			</div>
 			<div class="room-name">
-				<h2>Room room</h2>
-				<span>$666</span>
+				<h2>Стандарт</h2>
+				<div>
+					<span class="price">$666</span>
+					<span class="per-day">/сутки</span>
+					<p>Заселение в 13:00, выселение в 12:00!</p>
+				</div>
 			</div>
 			<div class="room-variables-wrapper">
 				<div class="room-variables">
-					<img src="#">
-					<span>2</span>
+					<img src="img/bedone.svg" class="bed-img">
+					<span class="bed">1</span>
 				</div>
 				<div class="room-variables">
-					<img src="#">
-					<span>3</span>
+					<img src="img/human.svg" class="room-img">
+					<span class="human">2</span>
 				</div>
 			</div>
 		</div>
 		<div class="page-third-right">
-			<img src="#">
+			<img src="img/room_01.jpg">
 		</div>
 	</section>
 	<section class="page-fourth">
-		<div class="page-fourth-left">
-			<div class="slider">
-				<img src="img/slider_01.jpg">
-				<img src="img/slider_02.jpg">
-				<img src="img/slider_03.jpg">
-				<img src="img/slider_04.jpg">
-				<img src="img/slider_03.jpg">
-			</div>
-			<div class="prev-btn"></div>
-			<div class="next-btn"></div>	
+		<h3>Галерея</h3>
+		<div class="slider">
+			<img src="img/slider_01.jpg">
+			<img src="img/slider_02.jpg">
+			<img src="img/slider_03.jpg">
+			<img src="img/slider_04.jpg">
+			<img src="img/slider_03.jpg">
 		</div>
-		<div class="page-fourth-right">
-			<!--<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2762.231773886737!2d30.35017021514616!3d46.185946279116116!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40c7c2c56907ca55%3A0x2867105ff94d8247!2sMagic%20Fly!5e0!3m2!1sru!2sua!4v1597162144775!5m2!1sru!2sua" frameborder="0" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe> -->
-		</div>
+		<div class="btns">
+			<img src="img/arrowleft.svg" class="prev-btn">
+			<img src="img/arrowright.svg" class="next-btn">
+		</div>	
 	</section>
 	<footer>
 		<div class="footer-page">

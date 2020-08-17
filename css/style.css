@@ -3,6 +3,12 @@
 	padding: 0;
 }
 
+.content {
+	width: 100%;
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
 nav {
 	position: fixed;
 	height: 100vh;
@@ -48,6 +54,15 @@ nav ul {
 	border-color: #3a665b;
 }
 
+.start-page-wrapper {
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+	width: 100%;
+	background: linear-gradient(#113C58, #132D38);
+	align-items: center;
+}
+
 .start-page {
 	display: flex;
 	justify-content: center;
@@ -55,8 +70,7 @@ nav ul {
 	flex-direction: column;
 	height: 100vh;
 	width: 100%;
-	background: linear-gradient(#474747, #333333);
-
+	
 	/* background-image: url(../img/main.jpg);
 	background-repeat: no-repeat;
 	background-size: cover; */
@@ -64,16 +78,31 @@ nav ul {
 
 .start-page h1 {
 	font-size: 78px;
-	font-family: 'Lemonada', cursive;
+	font-family: "Lemonada", cursive;
+}
+
+.start-page h1 span {
+	transition: opacity 800ms ease, 
+				color 800ms ease 200ms,
+				transform 700ms ease,
+				text-shadow 700ms ease 150ms;
+	transform: translateY(50px);
+	display: inline-block;
+	opacity: 0;
 }
 
 .start-page h1 span.text-animate {
-	font-size: 130px;
+	opacity: 1;
+	color: #EBE0BA;
+	transform: translateY(0px);
+	text-shadow: 3px 3px 5px black;
 }
 
 .number {
 	font-size: 38px;
 	margin-bottom: 5px;
+	color: #DB9E83;
+	text-shadow: 3px 3px 5px black;
 }
 
 .start-page img {
@@ -83,8 +112,8 @@ nav ul {
 
 .start-page div a {
 	text-decoration: none;
-	font-size: 25px;
-	color: red;
+	font-size: 21px;
+	color: #DB9E83;
 	margin-left: 7px;
 }
 
@@ -94,11 +123,32 @@ nav ul {
 	align-items: flex-end;
 }
 
+.start-page-wrapper button {
+	font-size: 28px;
+	flex: 0 1 60px;
+	min-width: 325px;
+	border: 2px solid #706c61;
+	transition: 600ms;
+	margin-bottom: 35px;
+	opacity: 0.7;
+	background-color: #34CAD8;
+	color: #132D38;
+}
+
+.start-page-wrapper button:hover {
+	background-color: #ff6947;
+	min-width: 350px;
+	border: 3px solid #706c61;
+	border-radius: 10%;
+	opacity: 0.9;
+}
+
 .page-second {
 	display: flex;
 	height: 100vh;
 	width: 100%;
-	background-color: #333333;
+	background-color: #113C58;
+	transition: 700ms;
 }
 
 .page-second-left {
@@ -112,47 +162,108 @@ nav ul {
 .page-second-left h2 {
 	font-size: 44px;
 	margin-bottom: 15px;
-	color: #e1f4f3;
+	color: #EBE0BA;
+	transition: 600ms ease;
+	visibility: hidden;
+	transform: translateY(100px);
+	opacity: 0;
+}
+
+.page-second-left h2.second-animate {
+	visibility: visible;
+	transform: translateY(0px);
+	opacity: 1;
 }
 
 .page-second-left p {
-	color: #e1f4f3;
-	font-size: 26px;
+	color: #EBE0BA;
+	font-size: 24px;
 	margin: 0 30px;
+	transition: 700ms ease;
+	visibility: hidden;
+	transform: translateY(125px);
+	opacity: 0;
+}
+
+.page-second-left p.second-animate {
+	visibility: visible;
+	transform: translateY(0px);
+	opacity: 1;
 }
 
 .page-second-right {
-	background-color: #706c61;
+	background-color: #113C58;
 	flex: 1;
+	overflow: hidden;
 }
+
+.page-second-right h2 {
+	color: #EBE0BA;
+	text-align: center;
+	font-size: 44px;
+	margin-top: 15px;
+	opacity: 0;
+	transition: 600ms;
+	transform: translateX(150px);
+}
+
+.page-second-right h2.animate {
+	opacity: 1;
+	transform: translateX(0px);
+}
+
 
 .page-second-right ul {
 	width: 100%;
 	height: 100%;
-	flex-wrap: wrap;
 	display: flex;
+	flex-wrap: wrap;
 }
 
 .page-second-right ul li {
-	width: 50%;
-	height: 50%;
-	list-style-type: none;
+	color: #EBE0BA;
 	display: flex;
+	flex: 0 0 50%;
+	list-style-type: none;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 }
 
-.page-second-right ul li span {
+.page-second-right .page-second-text {
 	font-size: 26px;
 	margin-top: 5px;
+	transition: 600ms;
+	opacity: 0;
+	transform: translateY(35px);
+}
+
+.page-second-right .page-second-text.animate {
+	opacity: 1;
+	transform: translateY(0px);
+}
+
+.page-second-right .page-second-img {
+	height: 20px;
+	width: 20px;
+	transition: 600ms;
+	opacity: 0;
+	transform: translateY(35px);
+	color: #34CAD8;
+}
+
+.page-second-right .page-second-img.animate {
+	height: 75px;
+	width: 75px;
+	opacity: 1;
+	transform: translateY(0px);
 }
 
 .page-third {
 	display: flex;
 	width: 100%;
 	height: 100vh;
-	background-color: #706c61;
+	background-color: #113C58;
 }
 
 .page-third-left {
@@ -163,17 +274,32 @@ nav ul {
 
 .room-type {
 	display: flex;
-	flex: 0.3;
+	flex: 0.2;
 	margin-left: 20%;
 	align-items: center;
 }
 
 .room-type-circles {
-	width: 5%;
-	height: 30%;
+	width: 18px;
+	height: 18px;
 	border-radius: 50%;
-	background-color: #fff;
+	background-color: #c2c2c2;
 	margin-left: 7px;
+}
+
+.room-type-circles:hover {
+	width: 20px;
+	height: 20px;
+	border-radius: 40%;
+	background-color: #999999;
+}
+
+.room-type-circles.picked {
+	width: 20px;
+	height: 20px;
+	border-radius: 40%;
+	border: 1px solid black;
+	background-color: #999999;
 }
 
 .room-name {
@@ -183,16 +309,26 @@ nav ul {
 }
 
 .room-name h2 {
-	flex: 0.5;
 	margin-left: 15%;
 	font-size: 46px;
+	transition: 300ms;
+	color: #EBE0BA;
 }
 
-.room-name span{
-	flex: 1;
+.room-name .price{
 	font-size: 40px;
 	margin-left: 20%;
-	align-self: flex-start;
+	color: #EBE0BA;
+}
+
+.room-name .per-day {
+	font-size: 21px;
+	color: #EBE0BA;
+}
+
+.room-name p {
+	margin-left: 20%;
+	color: #EBE0BA;
 }
 
 .room-variables-wrapper {
@@ -209,8 +345,14 @@ nav ul {
 }
 
 .room-variables span {
-	margin-left: 6px;
-	font-size: 26px;
+	margin-left: 13px;
+	font-size: 50px;
+	color: #EBE0BA;
+}
+
+.room-variables img {
+	height: 75px;
+	width: 75px;
 }
 
 .page-third-right {
@@ -218,30 +360,29 @@ nav ul {
 }
 
 .page-third-right img {
-	height: 85%;
-	width: 85%;
-	margin: 7%;
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
 }
 
 .page-fourth {
 	display: flex;
+	flex-direction: column;
 	width: 100%;
 	height: 100vh;
 	background-color: #fff;
+	overflow: hidden;
+	justify-content: center;
+    align-items: center;
 }
 
-.page-fourth-left {
-	display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-	flex: 1;
-	overflow: hidden;
+.page-fourth h3 {
+	font-size: 40px;
 }
 
 .slider {
 	display: flex;
-	width: 600px;
+	justify-content: center;
 	height: 400px;
 	overflow: hidden;
 }
@@ -252,32 +393,28 @@ nav ul {
 	transition: 600ms;
 }
 
+.btns {
+	display: flex;
+}
+
 .next-btn,
 .prev-btn {
 	height: 50px;
 	width: 50px;
 	border: 1px;
-	background-color: #000;
+	background-color: #706c61;
 }
 
 .next-btn:hover,
 .prev-btn:hover {
-	background-color: red;
+	background-color: #faa8a2;
 }
 
-.page-fourth-right {
-	flex: 1;
-}
-
-.page-fourth-right iframe {
-	width: 100%;
-	height: 100%;
-}
 
 footer {
 	width: 100%;
 	height: 60vh;
-	background-color: #322f3d;
+	background-color: #333333;
 }
 
 .footer-page {
