@@ -30,8 +30,11 @@ const secondPageRightHTwo = document.querySelector(".page-second-right h2");
 const secondPageRightImgs = document.querySelectorAll(".page-second-right .page-second-img");
 const secondPageRightText = document.querySelectorAll(".page-second-right .page-second-text");
 
-const thirdPageLeftImgStandart = document.querySelector(".page-third-right .img-standart");
-const thirdPageLeftImgHostel = document.querySelector(".page-third-right .img-hostel");
+const thirdPageLeftSliderStandart = document.querySelector(".page-third-right .slider-standart");
+const thirdPageLeftSliderHostel = document.querySelector(".page-third-right .slider-hostel");
+const thirdPageLeftImgsHostel = document.querySelectorAll(".page-third-right .slider-hostel img:not(.next-btn-img):not(.prv-btn-img)");
+const thirdPageLeftImgsStandart = document.querySelectorAll(".page-third-right .slider-standart img");
+const sliderHostelNext = document.querySelector(".slider-btn-next");
 
 const navList = document.querySelectorAll(".nav-list");
 const scrollAbout = document.querySelector(".page-second");
@@ -43,16 +46,25 @@ for(i=0; i <= nameSplit.length-1; i++){
     hotelName.innerHTML += "<span>" + nameSplit[i] + "</span>";
 }
 
-window.onload = calcWidth;
+window.onload = calcAll;
 
-function calcWidth(){
+function calcAll(){
+	const sliderWidth = thirdPageLeftImgsStandart[0].clientWidth;
 	const h2Height = document.querySelector(".page-second-right h2");
 	const ulHeight = document.querySelector(".page-second-right ul");
 	const chg = ulHeight.clientHeight - h2Height.clientHeight - 15;
 	ulHeight.style.height = chg + "px";
 
 	let currentImg = 0;
-	
+	let currImg = 0;
+	function nextIndex(array){
+		if(currImg+1 > array.length-1){
+			return 0;
+		} else {
+			return currImg+1;
+		}
+	}
+
 	sliderOne[currentImg].style.zIndex = "1";
 	sliderTwo[currentImg].style.zIndex = "1";
 	sliderOne[currentImg].style.opacity = "1";
@@ -142,8 +154,10 @@ function calcWidth(){
     		}
     		setTimeout(waitStyle, 310);
 
-    		thirdPageLeftImgHostel.style.transform = "translateX(0)";
-    		thirdPageLeftImgStandart.style.transform = "translateX(0)";
+    		thirdPageLeftSliderHostel.style.flex = "0 1";
+    		thirdPageLeftSliderStandart.style.flex = "1 0";
+    		//thirdPageLeftImgsHostel.style.transform = "translateX(0)";
+    		//thirdPageLeftImgStandart.style.transform = "translateX(0)";
     		roomCircles[currentCircle].classList.add("picked");
     		roomCircles[1].classList.remove("picked");
     		roomCircles[2].classList.remove("picked");
@@ -161,8 +175,10 @@ function calcWidth(){
     		}
     		setTimeout(waitStyle, 310);
 
-    		thirdPageLeftImgHostel.style.transform = "translateX(-100%)";
-    		thirdPageLeftImgStandart.style.transform = "translateX(100%)";
+    		thirdPageLeftSliderHostel.style.flex = "1 0";
+    		thirdPageLeftSliderStandart.style.flex = "0 1";
+    		//thirdPageLeftImgsHostel.style.transform = "translateX(-100%)";
+    		//thirdPageLeftImgStandart.style.transform = "translateX(100%)";
     		roomCircles[currentCircle].classList.add("picked");
     		roomCircles[0].classList.remove("picked");
     		roomCircles[2].classList.remove("picked");
@@ -187,6 +203,31 @@ function calcWidth(){
 
     for(i=0; i < roomCircles.length; i++){
     	roomCircles[i].addEventListener("click", roomPicker);
+	}
+
+	function roomSlider(){
+		thirdPageLeftImgsHostel[nextIndex(thirdPageLeftImgsHostel)].style.transition = "0ms";
+		thirdPageLeftImgsHostel[nextIndex(thirdPageLeftImgsHostel)].style.transform = "translateX("+sliderWidth*(currImg)+"px)";
+		thirdPageLeftImgsHostel[currImg].style.transform = "translateX("+(-sliderWidth*(currImg+1))+"px)";
+
+		function delay(){
+			thirdPageLeftImgsHostel[fixedImg()].style.transition = "400ms";
+			thirdPageLeftImgsHostel[fixedImg()].style.transform = "translateX("+(-sliderWidth*(currImg))+"px)";
+		}
+		setTimeout(delay, 20);
+
+		function fixedImg(){
+			if(nextIndex(thirdPageLeftImgsHostel) <= 0){
+				return thirdPageLeftImgsHostel.length-1;
+			} else {
+				return nextIndex(thirdPageLeftImgsHostel)-1;
+			}
+		}
+
+		currImg++;
+		if(currImg > thirdPageLeftImgsHostel.length-1){
+			currImg = 0;
+		}
 	}
 
 	window.onscroll = function(){
@@ -227,16 +268,25 @@ function calcWidth(){
 
 	function scrollToSm(target){
 		if (target === 0){
-			window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: "smooth"
+			});
 		} else {
 			const scrollDistn = Math.abs(window.pageYOffset + target.getBoundingClientRect().top);
-			window.scrollTo(0, scrollDistn);
+			window.scrollTo({
+				left: 0,
+				top: scrollDistn,
+				behavior: "smooth"
+			});
 		}
 	}
 
 	nextBtn.addEventListener("click", slideRight);
     //prevBtn.addEventListener("click", slideLeft);
     navBtn.addEventListener("click", sideBar);
+    sliderHostelNext.addEventListener("click", roomSlider);
 
     navList[0].addEventListener("click", () => {scrollToSm(0)});
     navList[1].addEventListener("click", () => {scrollToSm(scrollAbout)});

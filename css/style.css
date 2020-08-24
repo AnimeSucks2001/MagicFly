@@ -416,11 +416,83 @@ nav ul {
 	overflow: hidden;
 }
 
-.page-third-right img {
+.page-third-right .slider-standart,
+.page-third-right .slider-hostel
+{
+	height: 100%;
+	width: 100%;
+	transition: 500ms;
+	display: flex;
+}
+
+.page-third-right .slider-standart {
+	flex: 1 0;
+	position: relative;
+}
+
+.page-third-right .slider-hostel {
+	flex: 0 1;
+	position: relative;
+}
+
+.page-third-right .slider-hostel .slider-btn-next {
+	position: absolute;
+	height: 100%;
+	width: 100px;
+	background-color: rgba(44, 40, 43, 0);
+	cursor: pointer;
+	z-index: 10;
+	left: 85%;
+	transition: 400ms;
+}
+
+.page-third-right .slider-hostel .slider-btn-next:hover {
+	opacity: 0.5;
+	background-color: #68645E;
+}
+
+.page-third-right .slider-btn-next .next-btn-img {
+	position: absolute;
+	height: 75px;
+	width: 75px;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+}
+
+.page-third-right .slider-hostel .slider-btn-prv {
+	position: absolute;
+	height: 100%;
+	width: 100px;
+	background-color: rgba(44, 40, 43, 0);
+	cursor: pointer;
+	z-index: 10;
+	transition: 400ms;
+}
+
+.page-third-right .slider-hostel .slider-btn-prv:hover {
+	opacity: 0.5;
+	background-color: #68645E;
+}
+
+.page-third-right .slider-btn-prv .prv-btn-img {
+	position: absolute;
+	height: 75px;
+	width: 75px;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+}
+
+.page-third-right img:not(.next-btn-img):not(.prv-btn-img) {
 	height: 100%;
 	width: 100%;
 	object-fit: cover;
-	transition: 500ms;
+	transition: 400ms;
 }
 
 
@@ -471,15 +543,17 @@ nav ul {
 
 .next-btn,
 .prev-btn {
-	height: 50px;
-	width: 50px;
+	height: 75px;
+	width: 75px;
 	border: 1px;
 	background-color: #706c61;
+	cursor: pointer;
+	transition: 200ms;
 }
 
 .next-btn:hover,
 .prev-btn:hover {
-	background-color: #faa8a2;
+	background-color: #BE9C99;
 }
 
 
