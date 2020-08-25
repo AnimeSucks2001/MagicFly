@@ -33,14 +33,19 @@ const secondPageRightText = document.querySelectorAll(".page-second-right .page-
 const thirdPageLeftSliderStandart = document.querySelector(".page-third-right .slider-standart");
 const thirdPageLeftSliderHostel = document.querySelector(".page-third-right .slider-hostel");
 const thirdPageLeftImgsHostel = document.querySelectorAll(".page-third-right .slider-hostel img:not(.next-btn-img):not(.prv-btn-img)");
-const thirdPageLeftImgsStandart = document.querySelectorAll(".page-third-right .slider-standart img");
-const sliderHostelNext = document.querySelector(".slider-btn-next");
+const thirdPageLeftImgsStandart = document.querySelectorAll(".page-third-right .slider-standart img:not(.next-btn-img):not(.prv-btn-img)");
+const noDisplay = document.querySelector(".display-none");
+const sliderHostelNext = document.querySelector(".sliderH-btn-next");
+const sliderHostelPrev = document.querySelector(".sliderH-btn-prv");
+const sliderStandartNext = document.querySelector(".page-third-right .sliderS-btn-next");
+const sliderStandartPrev = document.querySelector(".page-third-right .sliderS-btn-prv");
 
 const navList = document.querySelectorAll(".nav-list");
 const scrollAbout = document.querySelector(".page-second");
 const scrollRooms = document.querySelector(".page-third");
 const scrollGallery = document.querySelector(".page-fourth");
-//const scrollMap = document.querySelector(".map");
+const scrollMap = document.querySelector(".map");
+const scrollMapLink = document.querySelector("header .scroll-map-link");
 
 for(i=0; i <= nameSplit.length-1; i++){
     hotelName.innerHTML += "<span>" + nameSplit[i] + "</span>";
@@ -57,11 +62,36 @@ function calcAll(){
 
 	let currentImg = 0;
 	let currImg = 0;
+	let currImgS = 0;
 	function nextIndex(array){
 		if(currImg+1 > array.length-1){
 			return 0;
 		} else {
 			return currImg+1;
+		}
+	}
+
+	function nextIndexS(array){
+		if(currImgS+1 > array.length-1){
+			return 0;
+		} else {
+			return currImgS+1;
+		}
+	}
+
+	function prevIndex(array){
+		if(currImg-1 < 0){
+			return array.length-1;
+		} else {
+			return currImg-1;
+		}
+	}
+
+	function prevIndexS(array){
+		if(currImgS-1 < 0){
+			return array.length-1;
+		} else {
+			return currImgS-1;
 		}
 	}
 
@@ -154,6 +184,8 @@ function calcAll(){
     		}
     		setTimeout(waitStyle, 310);
 
+    		noDisplay.style.visibility = "visible";
+    		
     		thirdPageLeftSliderHostel.style.flex = "0 1";
     		thirdPageLeftSliderStandart.style.flex = "1 0";
     		//thirdPageLeftImgsHostel.style.transform = "translateX(0)";
@@ -173,7 +205,9 @@ function calcAll(){
     			bedImg.src = "img/bedtwo.svg";
     			humanCount.textContent = "4";
     		}
-    		setTimeout(waitStyle, 310);
+			setTimeout(waitStyle, 310);
+			
+    		noDisplay.style.visibility = "hidden";
 
     		thirdPageLeftSliderHostel.style.flex = "1 0";
     		thirdPageLeftSliderStandart.style.flex = "0 1";
@@ -205,7 +239,7 @@ function calcAll(){
     	roomCircles[i].addEventListener("click", roomPicker);
 	}
 
-	function roomSlider(){
+	function hostelSliderNext(){
 		thirdPageLeftImgsHostel[nextIndex(thirdPageLeftImgsHostel)].style.transition = "0ms";
 		thirdPageLeftImgsHostel[nextIndex(thirdPageLeftImgsHostel)].style.transform = "translateX("+sliderWidth*(currImg)+"px)";
 		thirdPageLeftImgsHostel[currImg].style.transform = "translateX("+(-sliderWidth*(currImg+1))+"px)";
@@ -214,7 +248,7 @@ function calcAll(){
 			thirdPageLeftImgsHostel[fixedImg()].style.transition = "400ms";
 			thirdPageLeftImgsHostel[fixedImg()].style.transform = "translateX("+(-sliderWidth*(currImg))+"px)";
 		}
-		setTimeout(delay, 20);
+		setTimeout(delay, 40);
 
 		function fixedImg(){
 			if(nextIndex(thirdPageLeftImgsHostel) <= 0){
@@ -227,6 +261,81 @@ function calcAll(){
 		currImg++;
 		if(currImg > thirdPageLeftImgsHostel.length-1){
 			currImg = 0;
+		}
+	}
+
+	function hostelSliderPrev(){
+		thirdPageLeftImgsHostel[prevIndex(thirdPageLeftImgsHostel)].style.transition = "0ms";
+		thirdPageLeftImgsHostel[prevIndex(thirdPageLeftImgsHostel)].style.transform = "translateX("+(-sliderWidth*(prevIndex(thirdPageLeftImgsHostel)+1))+"px)";
+		thirdPageLeftImgsHostel[currImg].style.transform = "translateX("+(-sliderWidth*(currImg-1))+"px)";
+
+		function delay(){
+			thirdPageLeftImgsHostel[fixedImg()].style.transition = "400ms";
+			thirdPageLeftImgsHostel[fixedImg()].style.transform = "translateX("+(-sliderWidth*(currImg))+"px)";
+		}
+		setTimeout(delay, 40);
+
+		function fixedImg(){
+			if(prevIndex(thirdPageLeftImgsHostel) >= thirdPageLeftImgsHostel.length-1){
+				return 0;
+			} else {
+				return prevIndex(thirdPageLeftImgsHostel)+1;
+			}
+		}
+
+		currImg--;
+		if(currImg < 0){
+			currImg = thirdPageLeftImgsHostel.length-1;
+		}
+	}
+
+	function standartSliderNext(){
+		thirdPageLeftImgsStandart[nextIndexS(thirdPageLeftImgsStandart)].style.transition = "0ms";
+		thirdPageLeftImgsStandart[nextIndexS(thirdPageLeftImgsStandart)].style.transform = "translateX("+sliderWidth*(currImgS)+"px)";
+		thirdPageLeftImgsStandart[currImgS].style.transform = "translateX("+(-sliderWidth*(currImgS+1))+"px)";
+		console.log(nextIndexS(thirdPageLeftImgsStandart))
+		function delay(){
+			thirdPageLeftImgsStandart[fixedImg()].style.transition = "400ms";
+			thirdPageLeftImgsStandart[fixedImg()].style.transform = "translateX("+(-sliderWidth*(currImgS))+"px)";
+		}
+		setTimeout(delay, 40);
+
+		function fixedImg(){
+			if(nextIndexS(thirdPageLeftImgsStandart) <= 0){
+				return thirdPageLeftImgsStandart.length-1;
+			} else {
+				return nextIndexS(thirdPageLeftImgsStandart)-1;
+			}
+		}
+
+		currImgS++;
+		if(currImgS > thirdPageLeftImgsStandart.length-1){
+			currImgS = 0;
+		}
+	}
+
+	function standartSliderPrev(){
+		thirdPageLeftImgsStandart[prevIndexS(thirdPageLeftImgsStandart)].style.transition = "0ms";
+		thirdPageLeftImgsStandart[prevIndexS(thirdPageLeftImgsStandart)].style.transform = "translateX("+(-sliderWidth*(prevIndexS(thirdPageLeftImgsStandart)+1))+"px)";
+		thirdPageLeftImgsStandart[currImgS].style.transform = "translateX("+(-sliderWidth*(currImgS-1))+"px)";
+
+		function delay(){
+			thirdPageLeftImgsStandart[fixedImg()].style.transition = "400ms";
+			thirdPageLeftImgsStandart[fixedImg()].style.transform = "translateX("+(-sliderWidth*(currImgS))+"px)";
+		}
+		setTimeout(delay, 40);
+
+		function fixedImg(){
+			if(prevIndexS(thirdPageLeftImgsStandart) >= thirdPageLeftImgsStandart.length-1){
+				return 0;
+			} else {
+				return prevIndexS(thirdPageLeftImgsStandart)+1;
+			}
+		}
+
+		currImgS--;
+		if(currImgS < 0){
+			currImgS = thirdPageLeftImgsStandart.length-1;
 		}
 	}
 
@@ -286,13 +395,16 @@ function calcAll(){
 	nextBtn.addEventListener("click", slideRight);
     //prevBtn.addEventListener("click", slideLeft);
     navBtn.addEventListener("click", sideBar);
-    sliderHostelNext.addEventListener("click", roomSlider);
+    sliderHostelNext.addEventListener("click", hostelSliderNext);
+    sliderHostelPrev.addEventListener("click", hostelSliderPrev);
+    sliderStandartNext.addEventListener("click", standartSliderNext);
+    sliderStandartPrev.addEventListener("click", standartSliderPrev);
 
     navList[0].addEventListener("click", () => {scrollToSm(0)});
     navList[1].addEventListener("click", () => {scrollToSm(scrollAbout)});
     navList[2].addEventListener("click", () => {scrollToSm(scrollRooms)});
     navList[3].addEventListener("click", () => {scrollToSm(scrollGallery)});
-    //navList[4].addEventListener("click", () => {scrollToSm(scrollMap)});
-
+    navList[4].addEventListener("click", () => {scrollToSm(scrollMap)});
+    scrollMapLink.addEventListener("click", () => {scrollToSm(scrollMap)});
 }
 
