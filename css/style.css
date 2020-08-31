@@ -9,6 +9,10 @@
 	margin: 0 auto;
 }
 
+.shrek {
+	color: green;
+}
+
 nav {
 	position: fixed;
 	height: 100vh;
