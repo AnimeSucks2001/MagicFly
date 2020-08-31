@@ -22,7 +22,6 @@ nav {
 nav ul {
 	border-top: 2px solid #BE9C99;
 	border-bottom: 2px solid #BE9C99;
-	transform: translate(-100%);
 }
 
 .nav-list {
@@ -39,52 +38,6 @@ nav ul {
 	cursor: pointer;
 }
 
-.nav-btn {
-	position: absolute;
-	background-color: #2C282B;
-	height: 45px;
-	width: 35px;
-	border: 2px solid #BE9C99;
-	border-left-width: 0;
-	border-bottom-right-radius: 25%;
-	border-top-right-radius: 25%;
-	transition: 400ms;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-}
-
-.nav-btn:hover {
-	background-color: #BE9C99;
-	border-color: #2C282B;
-	cursor: pointer;
-}
-
-.nav-btn:hover div{
-	background-color: #2C282B;
-}
-
-.nav-btn div {
-	background-color: #BE9C99;
-	height: 2px;
-	margin: 3px 0;
-	width: 25px;
-	transition: 500ms;
-}
-
-.hamburger-one.animate {
-	transform: translateY(8px) rotate(-45deg);
-}
-
-.hamburger-two.animate {
-	transform: translateX(-100%);
-	opacity: 0;
-}
-
-.hamburger-three.animate {
-	transform: translateY(-8px) rotate(45deg);
-}
 
 .page-first {
 	height: 100vh;
